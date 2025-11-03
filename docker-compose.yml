@@ -11,7 +11,16 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - /usr/bin/docker:/usr/bin/docker
       - /usr/libexec/docker/cli-plugins/docker-compose:/usr/libexec/docker/cli-plugins/docker-compose
-    env_file:
-      - .env
+    environment:
+      JAVA_OPTS: "-Djenkins.install.runSetupWizard=false"
+      CASC_JENKINS_CONFIG: "/usr/share/jenkins/ref/casc_configs/jenkins-configration.yaml"
+      JENKINS_ADMIN_ID: "ahmad"
+      JENKINS_ADMIN_PASSWORD: "ahmad"
+      JENKINS_jobcreator_ID: "ahmadjob"
+      JENKINS_jobcreator_PASSWORD: "ahmadjob"
+      JOB_NAME: "portfolio-backend-build"
+      GIT_REPO: "https://github.com/Muhammad-Ahmad-Jutt/portfolio-backend.git"
+      GIT_BRANCH: "main"
+      JOB_FILENAME: "config.xml"
 volumes:
   jenkins_home:
