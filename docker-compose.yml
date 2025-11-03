@@ -1,25 +1,3 @@
-
-# version: "3.9"
-
-# services:
-#   jenkins:
-#     build: .
-#     container_name: jenkins-server
-#     user: root
-#     ports:
-#       - "8080:8080"
-#       - "50000:50000"
-#     volumes:
-#       - ./data:/var/jenkins_home          # Jenkins home
-#       - /var/run/docker.sock:/var/run/docker.sock
-#       - /usr/bin/docker:/usr/bin/docker
-#       - /usr/libexec/docker/cli-plugins/docker-compose:/usr/libexec/docker/cli-plugins/docker-compose
-#     environment:
-#       CASC_JENKINS_CONFIG: /usr/share/jenkins/ref/casc_configs/jenkins.yaml
-#       JAVA_OPTS: -Djenkins.install.runSetupWizard=false
-
-version: "3.9"
-
 services:
   jenkins:
     build: .
@@ -33,15 +11,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - /usr/bin/docker:/usr/bin/docker
       - /usr/libexec/docker/cli-plugins/docker-compose:/usr/libexec/docker/cli-plugins/docker-compose
-    environment:
-      CASC_JENKINS_CONFIG: /usr/share/jenkins/ref/casc_configs/jenkins.yaml
-      JAVA_OPTS: -Djenkins.install.runSetupWizard=false
-      # JENKINS_ADMIN_ID: ahmad 
-      # ENKINS_ADMIN_PASSWORD: ahmad
-      JENKINS_OPTS: "--argumentsRealm.roles.user=ahmad --argumentsRealm.passwd.admin=ahmad --argumentsRealm.roles.admin=admin"
-      # JENKINS_ADMIN_ID: admin
-      # JENKINS_ADMIN_PASSWORD: admin123
-      # JENKINS_ADMIN_EMAIL: ahmadarshad12345@gmail.com   
-
+    env_file:
+      - .env
 volumes:
   jenkins_home:
