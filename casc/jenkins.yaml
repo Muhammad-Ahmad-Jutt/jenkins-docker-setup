@@ -14,7 +14,7 @@ credentials:
 jenkins:
   authorizationStrategy:
     loggedInUsersCanDoAnything:
-      allowAnonymousRead: false
+      allowAnonymousRead: true
   crumbIssuer:
     standard:
       excludeClientIPFromCrumb: false
@@ -45,27 +45,27 @@ jenkins:
   remotingSecurity:
     enabled: true
   scmCheckoutRetryCount: 0
-  securityRealm:
-    local:
-      allowsSignup: false
-      enableCaptcha: false
-      users:
-      - id: "ahmad"
-        name: "ahmad"
-        properties:
-        - theme:
-            theme: "noOp"
-        - "consoleUrlProvider"
-        - "viewsTabBar"
-        - myView:
-            viewsTabBar: "standard"
-        - preferredProvider:
-            providerId: "default"
-        - "timezone"
-        - "experimentalFlags"
-        - mailer:
-            emailAddress: "ahmadarshad12345@gmail.com"
-        - "apiToken"
+  # securityRealm:
+  #   local:
+  #     allowsSignup: false
+  #     enableCaptcha: false
+  #     users:
+  #     - id: "ahmad"
+  #       name: "ahmad"
+  #       properties:
+  #       - theme:
+  #           theme: "noOp"
+  #       - "consoleUrlProvider"
+  #       - "viewsTabBar"
+  #       - myView:
+  #           viewsTabBar: "standard"
+  #       - preferredProvider:
+  #           providerId: "default"
+  #       - "timezone"
+  #       - "experimentalFlags"
+  #       - mailer:
+  #           emailAddress: "ahmadarshad12345@gmail.com"
+  #       - "apiToken"
   slaveAgentPort: 50000
   updateCenter:
     sites:
@@ -89,6 +89,8 @@ appearance:
     showStageNames: false
   prism:
     theme: PRISM
+  simpleTheme: {
+    }
   themeManager:
     disableUserThemes: false
     theme: "noOp"
@@ -114,8 +116,6 @@ security:
     }
   queueItemAuthenticator: {
     }
-  sSHD:
-    port: -1
   scriptApproval:
     forceSandbox: false
   updateSiteWarningsConfiguration: {
@@ -175,8 +175,6 @@ unclassified:
     apiRateLimitChecker: ThrottleForNormalize
   gitHubPluginConfig:
     hookUrl: "http://localhost:8080/github-webhook/"
-  globalConfigFiles: {
-    }
   globalDefaultFlowDurabilityLevel: {
     }
   globalLibraries: {

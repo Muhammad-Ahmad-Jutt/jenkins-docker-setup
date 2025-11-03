@@ -1,2 +1,4 @@
 data
 .git
+jobs/test_build/
+.env
