@@ -38,7 +38,7 @@
   <builders>
     <hudson.tasks.Shell>
       <command>docker-compose down 
-docker-compose up --build -d</command>
+docker-compose up -d</command>
       <configuredLocalRules/>
     </hudson.tasks.Shell>
   </builders>
