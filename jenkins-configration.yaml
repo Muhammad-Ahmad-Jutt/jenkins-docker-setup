@@ -44,7 +44,7 @@ jobs:
                   remote {
                       github("Muhammad-Ahmad-Jutt/portfolio-backend", "https")
                   }
-                  branch("*/develop")
+                  branch("*/main")
               }
           }
 
