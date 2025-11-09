@@ -44,13 +44,12 @@ jobs:
                   remote {
                       github("Muhammad-Ahmad-Jutt/portfolio-backend", "https")
                   }
-                  branch("*/main")
+                  branch("*/develop")
               }
           }
 
           triggers {
-              cron('H/15 * * * *') // 15 min time triggers
-              cron('@once')         // triggers the first build immediately after job is created or Jenkins starts Not this line is from the llm
+              scm('H/4 * * * *') // 4 min time triggers
 
           }
 
