@@ -29,11 +29,10 @@ unclassified:
   location:
     url: http://127.0.0.1:8080/
 
-# Example seed job (uncomment if you want Jenkins to auto-load your Groovy job DSL)
-# jobs:
-#   - file: /usr/local/seed.groovy
+
 jobs:
-  - script: |
+# the script below is like a converion i created a workflow then i use that xml to create a scirpt to mimic it through ai
+  - script: | 
       job("portfolio-backend-build") {
           description("This workflow will handle the CI/CD for the portfolio backend project")
           keepDependencies(false)
@@ -50,14 +49,13 @@ jobs:
           }
 
           triggers {
-              scm("H/15 * * * *") // replicate your TimerTrigger
+              cron('H/15 * * * *') // 15 min time triggers
+              cron('@once')         // triggers the first build immediately after job is created or Jenkins starts Not this line is from the llm
+
           }
 
           steps {
-              shell("""
-                  docker compose down
-                  docker compose up --build -d
-              """)
+              shell("docker-compose down && docker-compose up --build -d")
           }
 
           wrappers {
